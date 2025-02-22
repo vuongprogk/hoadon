@@ -13,6 +13,20 @@
                 <DataGridTextColumn Header="Ngày lập" Binding="{Binding Ngaylaphd}"/>
                 <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding Tenkh}"/>
             </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <Expander Header="Chi tiết hoá đơn">
+                        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Chitiethoadons}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Mã hàng hóa" Binding="{Binding Mahang}"/>
+                                <DataGridTextColumn Header="Tên hàng hóa" Binding="{Binding Tenhang}"/>
+                                <DataGridTextColumn Header="Số lượng" Binding="{Binding Soluong}"/>
+                                <DataGridTextColumn Header="Đơn giá" Binding="{Binding Dongia}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Expander>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
     </StackPanel>
 </Window>
