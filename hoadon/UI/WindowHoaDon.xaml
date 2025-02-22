@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="WindowHoaDon" Height="450" Width="800">
     <StackPanel>
-        <DataGrid AutoGenerateColumns="False" Height="250">
+        <DataGrid AutoGenerateColumns="False" Height="250" x:Name="dgHoaDon">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Số hóa đơn" Binding="{Binding Sohd}"/>
                 <DataGridTextColumn Header="Ngày lập" Binding="{Binding Ngaylaphd}"/>
