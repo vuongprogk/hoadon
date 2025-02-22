@@ -64,7 +64,8 @@ namespace hoadon.UI
             x.MahangNavigation = context.Hanghoas.Find(x.Mahang);
             x.Dongia = x.MahangNavigation.Dongia;
             hd.Chitiethoadons.Add(x);
-            gdChitiet.ItemsSource = hd.Chitiethoadons.ToList();
+            //gdChitiet.ItemsSource = hd.Chitiethoadons.ToList();
+            stackHoaDon.DataContext = CHoadon.Clone(hd);
 
         }
 
@@ -75,6 +76,18 @@ namespace hoadon.UI
 
         private void add_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            var x = stackHoaDon.DataContext as CHoadon;
+            var y = CHoadon.ToHoadon(x);
+            var context = new hoadonContext();
+            foreach(var c in y.Chitiethoadons)
+            {
+                c.Sohd = y.Sohd;
+            }
+            context.Hoadons.Add(y);
+            context.SaveChanges();
+            dgHoaDon.ItemsSource = context.Hoadons.ToList();
+            hd = new CHoadon();
+            stackHoaDon.DataContext = hd;
 
         }
 

@@ -46,5 +46,19 @@ namespace hoadon.MyModels
                 Chitiethoadons = c.Chitiethoadons.Select(c => CChitiethoadon.ToChitiethoadon(c)).ToList()
             };
         }
+        public static CHoadon Clone(CHoadon cHoadon)
+        {
+            var hd = new CHoadon
+            {
+                Sohd = cHoadon.Sohd,
+                Ngaylaphd = cHoadon?.Ngaylaphd,
+                Tenkh = cHoadon.Tenkh,
+            };
+            foreach (var ct in cHoadon.Chitiethoadons)
+            {
+                hd.Chitiethoadons.Add(ct);
+            }
+            return hd;
+        }
     }
 }
