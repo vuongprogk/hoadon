@@ -1,4 +1,5 @@
 ﻿using hoadon.Models;
+using hoadon.MyModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,22 @@ namespace hoadon.UI
         {
             hoadonContext db = new hoadonContext();
             dgHoaDon.ItemsSource = db.Hoadons.ToList();
+        }
+
+        private void dgHoaDon_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)
+        {
+            var hd = e.Row.Item as Hoadon;
+            var context = new hoadonContext();
+            var cthd = context.Chitiethoadons.Where(p => p.Sohd == hd.Sohd).ToList();
+            hd.Chitiethoadons = cthd;
+            foreach (var item in cthd)
+            {
+                var hh = context.Hanghoas.Find(item.Mahang);
+                item.MahangNavigation = hh;
+            }
+            var detailDataGrid = e.DetailsElement;
+            var stackPanel = detailDataGrid.FindName("stackHoaDon") as StackPanel;
+            stackPanel.DataContext = CHoadon.FromHoadon(hd);
         }
     }
 }
