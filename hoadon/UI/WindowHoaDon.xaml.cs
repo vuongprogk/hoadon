@@ -30,6 +30,7 @@ namespace hoadon.UI
         {
             hoadonContext db = new hoadonContext();
             dgHoaDon.ItemsSource = db.Hoadons.ToList();
+            cmbMahang.ItemsSource = db.Hanghoas.ToList();
         }
 
         private void dgHoaDon_LoadingRowDetails(object sender, DataGridRowDetailsEventArgs e)

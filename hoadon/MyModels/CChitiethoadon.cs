@@ -9,10 +9,10 @@ namespace hoadon.MyModels
 {
     class CChitiethoadon
     {
-        public string Sohd { get; set; }
+        public string Sohd { get; set; } = string.Empty;
         public string Mahang { get; set; }
         public double? Dongia { get; set; }
-        public int? Soluong { get; set; }
+        public int? Soluong { get; set; } = 1;
         public string Tenhang
         {
             get

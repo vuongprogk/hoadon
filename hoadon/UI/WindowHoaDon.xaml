@@ -9,8 +9,9 @@
         Title="WindowHoaDon" Height="450" Width="800" Loaded="Window_Loaded">
     <Window.Resources>
         <Model:CHoadon x:Key="rsHoadon"/>
+        <Model:CChitiethoadon x:Key="rsCTHD"/>
     </Window.Resources>
-    <StackPanel>
+    <StackPanel Margin="10">
         <StackPanel Margin="5" DataContext="{StaticResource rsHoadon}" x:Name="stackHoaDon">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -34,10 +35,11 @@
                 <TextBox Grid.Column="2" Grid.Row="2"  Text="{Binding Tenkh}" IsReadOnly="True"/>
                 <TextBox Grid.Column="2" Grid.Row="3"  Text="{Binding Thanhtien, Mode=OneWay}" IsReadOnly="True"/>
             </Grid>
-            <Grid>
+            <Separator/>
+            <Grid x:Name="gridCTHD" DataContext="{StaticResource rsCTHD}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -52,13 +54,19 @@
                 <TextBlock Grid.Column="2" Grid.Row="0" Text="Đơn vị tính" FontWeight="Bold"/>
                 <TextBlock Grid.Column="3" Grid.Row="0" Text="Đơn giá" FontWeight="Bold"/>
                 <TextBlock Grid.Column="4" Grid.Row="0" Text="Số lượng" FontWeight="Bold"/>
-                <TextBox Grid.Column="0" Grid.Row="1"  Text="{Binding Mahang}"/>
-                <TextBox Grid.Column="1" Grid.Row="1"  Text="{Binding Tenhang}"/>
-                <TextBox Grid.Column="2" Grid.Row="1"  Text="{Binding Dvt}"/>
-                <TextBox Grid.Column="3" Grid.Row="1"  Text="{Binding Dongia}"/>
-                <TextBox Grid.Column="4" Grid.Row="1"  Text="{Binding Soluong}"/>
+                <ComboBox Grid.Column="0" Grid.Row="1"  x:Name="cmbMahang"
+                          DisplayMemberPath="Mahang" SelectedValuePath="Mahang"
+                          SelectedValue="{Binding Mahang}"
+                          />
+                <TextBox Grid.Column="1" Grid.Row="1" IsReadOnly="True"  Text="{Binding ElementName=cmbMahang,Path=SelectedItem.Tenhang}"
+                         />
+                <TextBox Grid.Column="2" Grid.Row="1" Text="{Binding ElementName=cmbMahang,Path=SelectedItem.Dvt}" IsReadOnly="True"/>
+                <TextBox Grid.Column="3" Grid.Row="1"  Text="{Binding ElementName=cmbMahang,Path=SelectedItem.Dongia}" IsReadOnly="True"/>
+                <TextBox Grid.Column="4" Grid.Row="1"  Text="{Binding Soluong}" IsReadOnly="True"/>
                 <Button Grid.Column="5" Grid.Row="1" Content="Chọn hàng hoá"/>
             </Grid>
+            <Separator/>
+
             <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Chitiethoadons}" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Mã hàng hóa" Binding="{Binding Mahang}"/>
@@ -70,6 +78,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
+        <Button Content="Lập hoá đơn"/>
         <Label Content="Danh sách hoá đơn"/>
         <DataGrid AutoGenerateColumns="False" Height="250" x:Name="dgHoaDon" LoadingRowDetails="dgHoaDon_LoadingRowDetails">
             <DataGrid.Columns>
