@@ -11,6 +11,66 @@
         <Model:CHoadon x:Key="rsHoadon"/>
     </Window.Resources>
     <StackPanel>
+        <StackPanel Margin="5" DataContext="{StaticResource rsHoadon}" x:Name="stackHoaDon">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="Số hoá đơn" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="Ngày lập hoá đơn" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Grid.Row="2" Text="Tên khách hàng" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Grid.Row="3" Text="Tổng tiền" FontWeight="Bold"/>
+                <TextBox Grid.Column="2" Grid.Row="0"  Text="{Binding Sohd}" IsReadOnly="True"/>
+                <TextBox Grid.Column="2" Grid.Row="1"  Text="{Binding Ngaylaphd}" IsReadOnly="True"/>
+                <TextBox Grid.Column="2" Grid.Row="2"  Text="{Binding Tenkh}" IsReadOnly="True"/>
+                <TextBox Grid.Column="2" Grid.Row="3"  Text="{Binding Thanhtien, Mode=OneWay}" IsReadOnly="True"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Mã hàng hóa" FontWeight="Bold"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="Tên hàng hóa" FontWeight="Bold"/>
+                <TextBlock Grid.Column="2" Grid.Row="0" Text="Đơn vị tính" FontWeight="Bold"/>
+                <TextBlock Grid.Column="3" Grid.Row="0" Text="Đơn giá" FontWeight="Bold"/>
+                <TextBlock Grid.Column="4" Grid.Row="0" Text="Số lượng" FontWeight="Bold"/>
+                <TextBox Grid.Column="0" Grid.Row="1"  Text="{Binding Mahang}"/>
+                <TextBox Grid.Column="1" Grid.Row="1"  Text="{Binding Tenhang}"/>
+                <TextBox Grid.Column="2" Grid.Row="1"  Text="{Binding Dvt}"/>
+                <TextBox Grid.Column="3" Grid.Row="1"  Text="{Binding Dongia}"/>
+                <TextBox Grid.Column="4" Grid.Row="1"  Text="{Binding Soluong}"/>
+                <Button Grid.Column="5" Grid.Row="1" Content="Chọn hàng hoá"/>
+            </Grid>
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Chitiethoadons}" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã hàng hóa" Binding="{Binding Mahang}"/>
+                    <DataGridTextColumn Header="Tên hàng hóa" Binding="{Binding Tenhang}"/>
+                    <DataGridTextColumn Header="Đơn vị tính" Binding="{Binding Dvt}"/>
+                    <DataGridTextColumn Header="Đơn giá" Binding="{Binding Dongia}"/>
+                    <DataGridTextColumn Header="Số lượng" Binding="{Binding Soluong}"/>
+                    <DataGridTextColumn Header="Thành tiền" Binding="{Binding Thanhtien}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <Label Content="Danh sách hoá đơn"/>
         <DataGrid AutoGenerateColumns="False" Height="250" x:Name="dgHoaDon" LoadingRowDetails="dgHoaDon_LoadingRowDetails">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Số hóa đơn" Binding="{Binding Sohd}"/>
