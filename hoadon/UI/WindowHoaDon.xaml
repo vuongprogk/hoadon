@@ -16,7 +16,7 @@
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
                     <Expander Header="Chi tiết hoá đơn">
-                        <StackPanel>
+                        <StackPanel Margin="5">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
