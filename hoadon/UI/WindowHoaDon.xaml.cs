@@ -21,6 +21,9 @@ namespace hoadon.UI
     /// </summary>
     public partial class WindowHoaDon : Window
     {
+        public static RoutedUICommand select = new RoutedUICommand();
+        public static RoutedUICommand addContract = new RoutedUICommand();
+        private CHoadon hd = new CHoadon();
         public WindowHoaDon()
         {
             InitializeComponent();
@@ -47,6 +50,37 @@ namespace hoadon.UI
             var detailDataGrid = e.DetailsElement;
             var stackPanel = detailDataGrid.FindName("stackHoaDon") as StackPanel;
             stackPanel.DataContext = CHoadon.FromHoadon(hd);
+        }
+
+        private void chon_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var ct = gridCTHD.DataContext as CChitiethoadon;
+            var x = new CChitiethoadon()
+            {
+                Mahang = ct.Mahang,
+                Soluong = ct.Soluong,
+            };
+            var context = new hoadonContext();
+            x.MahangNavigation = context.Hanghoas.Find(x.Mahang);
+            x.Dongia = x.MahangNavigation.Dongia;
+            hd.Chitiethoadons.Add(x);
+            gdChitiet.ItemsSource = hd.Chitiethoadons.ToList();
+
+        }
+
+        private void chon_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void add_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
+
+        private void add_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 }
