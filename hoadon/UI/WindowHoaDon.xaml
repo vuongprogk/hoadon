@@ -4,10 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:hoadon.UI"
+        xmlns:Model="clr-namespace:hoadon.MyModels"
         mc:Ignorable="d"
         Title="WindowHoaDon" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Model:CHoadon x:Key="rsHoadon"/>
+    </Window.Resources>
     <StackPanel>
-        <DataGrid AutoGenerateColumns="False" Height="250" x:Name="dgHoaDon">
+        <DataGrid AutoGenerateColumns="False" Height="250" x:Name="dgHoaDon" LoadingRowDetails="dgHoaDon_LoadingRowDetails">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Số hóa đơn" Binding="{Binding Sohd}"/>
                 <DataGridTextColumn Header="Ngày lập" Binding="{Binding Ngaylaphd}"/>
@@ -16,7 +20,7 @@
             <DataGrid.RowDetailsTemplate>
                 <DataTemplate>
                     <Expander Header="Chi tiết hoá đơn">
-                        <StackPanel Margin="5">
+                        <StackPanel Margin="5" DataContext="{StaticResource rsHoadon}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -37,16 +41,16 @@
                                 <TextBox Grid.Column="2" Grid.Row="0"  Text="{Binding Sohd}" IsReadOnly="True"/>
                                 <TextBox Grid.Column="2" Grid.Row="1"  Text="{Binding Ngaylaphd}" IsReadOnly="True"/>
                                 <TextBox Grid.Column="2" Grid.Row="2"  Text="{Binding Tenkh}" IsReadOnly="True"/>
-                                <TextBox Grid.Column="2" Grid.Row="3"  Text="{Binding Tongtien}" IsReadOnly="True"/>
+                                <TextBox Grid.Column="2" Grid.Row="3"  Text="{Binding Thanhtien}" IsReadOnly="True"/>
                             </Grid>
-                            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Chitiethoadons}">
+                            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Chitiethoadons}" IsReadOnly="True">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Mã hàng hóa" Binding="{Binding Mahang}"/>
                                     <DataGridTextColumn Header="Tên hàng hóa" Binding="{Binding Tenhang}"/>
                                     <DataGridTextColumn Header="Đơn vị tính" Binding="{Binding Dvt}"/>
                                     <DataGridTextColumn Header="Đơn giá" Binding="{Binding Dongia}"/>
                                     <DataGridTextColumn Header="Số lượng" Binding="{Binding Soluong}"/>
-                                    <DataGridTextColumn Header="Thành tiền"/>
+                                    <DataGridTextColumn Header="Thành tiền" Binding="{Binding Thanhtien}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
                         </StackPanel>
