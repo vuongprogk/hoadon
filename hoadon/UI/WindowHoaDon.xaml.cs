@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hoadon.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,12 @@ namespace hoadon.UI
         public WindowHoaDon()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            hoadonContext db = new hoadonContext();
+            dgHoaDon.ItemsSource = db.Hoadons.ToList();
         }
     }
 }
