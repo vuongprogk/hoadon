@@ -45,7 +45,7 @@
                 <DataGridTextColumn Header="Mã hàng hóa" Binding="{Binding Mahang}"/>
                 <DataGridTextColumn Header="Tên hàng hóa" Binding="{Binding Tenhang}"/>
                 <DataGridTextColumn Header="Đơn giá" Binding="{Binding Dongia}"/>
-            <DataGridTextColumn Header="Đơn vị tính" Binding="{Binding Dvt}"/>
+                <DataGridTextColumn Header="Đơn vị tính" Binding="{Binding Dvt}"/>
             </DataGrid.Columns>
         </DataGrid>
 
