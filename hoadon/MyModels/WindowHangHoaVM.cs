@@ -11,7 +11,7 @@ namespace hoadon.MyModels
 {
     class WindowHangHoaVM : CBaseMVVM
     {
-        public List<Hanghoa> m_listHangHoa { get; set; }
+        private List<Hanghoa> m_listHangHoa { get; set; }
         public List<Hanghoa> Hanghoas
         {
             get { return m_listHangHoa; }
@@ -21,7 +21,7 @@ namespace hoadon.MyModels
                 NotifyPropertyChanged("Hanghoas");
             }
         }
-        public Hanghoa m_selectionHangHoa { get; set; }
+        private Hanghoa m_selectionHangHoa { get; set; }
         public Hanghoa SelectionHangHoa
         {
             get
