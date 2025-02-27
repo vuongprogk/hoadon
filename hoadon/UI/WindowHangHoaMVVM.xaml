@@ -31,7 +31,7 @@
             <TextBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" />
             <Button Grid.Column="3" Grid.Row="0" Content="Thêm"/>
             <Button Grid.Column="3" Grid.Row="1" Content="Sửa" />
-            <Button Grid.Column="3" Grid.Row="2" Content="Xóa" />
+            <Button Grid.Column="3" Grid.Row="2" Content="Xóa"  Command="{Binding DeleteCommand}"/>
         </Grid>
         <DataGrid  Name="dataGridHangHoa" AutoGenerateColumns="False" 
                    IsReadOnly="True" ItemsSource="{Binding Hanghoas}" 
