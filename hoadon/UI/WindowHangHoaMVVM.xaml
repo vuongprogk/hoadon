@@ -35,10 +35,10 @@
         </Grid>
         <DataGrid  Name="dataGridHangHoa" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Hanghoas}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Mã hàng hóa" />
-                <DataGridTextColumn Header="Tên hàng hóa" />
-                <DataGridTextColumn Header="Đơn giá"/>
-                <DataGridTextColumn Header="Đơn vị tính"/>
+                <DataGridTextColumn Header="Mã hàng hóa" Binding="{Binding Mahang}"/>
+                <DataGridTextColumn Header="Tên hàng hóa" Binding="{Binding Tenhang}"/>
+                <DataGridTextColumn Header="Đơn giá" Binding="{Binding Dongia}"/>
+                <DataGridTextColumn Header="Đơn vị tính" Binding="{Binding Dvt}"/>
             </DataGrid.Columns>
         </DataGrid>
 
