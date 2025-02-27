@@ -10,6 +10,7 @@
         <Menu>
             <MenuItem Header="Hàng hóa" x:Name="menuHangHoa" Click="menuHangHoa_Click"/>
             <MenuItem Header="Hóa đơn" x:Name="menuHoaDon" Click="menuHoaDon_Click"/>
+            <MenuItem Header="Quản lý hàng hoá" x:Name="menuQLHH" Click="menuQLHH_Click"/>
         </Menu>
     </StackPanel>
 </Window>

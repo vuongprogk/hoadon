@@ -23,4 +23,10 @@ public partial class MainWindow : Window
         var f = new WindowHoaDon();
         f.Show();
     }
+
+    private void menuQLHH_Click(object sender, RoutedEventArgs e)
+    {
+        var f = new WindowHangHoaMVVM();
+        f.Show();
+    }
 }
