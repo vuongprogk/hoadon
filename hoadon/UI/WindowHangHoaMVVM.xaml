@@ -33,7 +33,9 @@
             <Button Grid.Column="3" Grid.Row="1" Content="Sửa" />
             <Button Grid.Column="3" Grid.Row="2" Content="Xóa" />
         </Grid>
-        <DataGrid  Name="dataGridHangHoa" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding Hanghoas}">
+        <DataGrid  Name="dataGridHangHoa" AutoGenerateColumns="False" 
+                   IsReadOnly="True" ItemsSource="{Binding Hanghoas}" 
+                   SelectedItem="{Binding SelectionHangHoa}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã hàng hóa" Binding="{Binding Mahang}"/>
                 <DataGridTextColumn Header="Tên hàng hóa" Binding="{Binding Tenhang}"/>
