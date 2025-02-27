@@ -25,12 +25,12 @@
             <TextBlock Grid.Column="0" Grid.Row="1" Text="Tên hàng hóa" FontWeight="Bold"/>
             <TextBlock Grid.Column="0" Grid.Row="2" Text="Đơn giá" FontWeight="Bold"/>
             <TextBlock Grid.Column="0" Grid.Row="3" Text="Đơn vị tính" FontWeight="Bold"/>
-            <TextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"  />
-            <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" />
-            <TextBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" />
-            <TextBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" />
-            <Button Grid.Column="3" Grid.Row="0" Content="Thêm"/>
-            <Button Grid.Column="3" Grid.Row="1" Content="Sửa" />
+            <TextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding Mahang}" />
+            <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Tenhang}"/>
+            <TextBox Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding Dongia}"/>
+            <TextBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding Dvt}"/>
+            <Button Grid.Column="3" Grid.Row="0" Content="Thêm" Command="{Binding AddCommand}"/>
+            <Button Grid.Column="3" Grid.Row="1" Content="Sửa"  Command="{Binding UpdateCommand}"/>
             <Button Grid.Column="3" Grid.Row="2" Content="Xóa"  Command="{Binding DeleteCommand}"/>
         </Grid>
         <DataGrid  Name="dataGridHangHoa" AutoGenerateColumns="False" 
