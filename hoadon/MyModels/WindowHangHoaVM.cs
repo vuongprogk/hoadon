@@ -10,6 +10,7 @@ namespace hoadon.MyModels
     class WindowHangHoaVM
     {
         public List<Hanghoa> Hanghoas { get; set; }
+        public Hanghoa SelectionHangHoa { get; set; }
         public WindowHangHoaVM()
         {
             hoadonContext db = new hoadonContext();
